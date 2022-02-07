@@ -1,0 +1,66 @@
+.subtype {
+  display: grid;
+  grid-template-areas:
+    'recycl descrs pics';
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-gap: 5px;
+  padding: 3px;
+
+  &>div {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  &>ul {
+      background-color: white;
+      padding: 10px 10px 10px 30px;
+      border-radius: 5px;
+  }
+
+  &__recycle {
+    grid-area: recycle;
+  }
+
+  &__recycl-mobile {
+    display: none;
+  }
+
+  &__descrs {
+    grid-area: descrs;
+    margin: 0;
+    text-align: left;
+    list-style-type: circle;
+  }
+
+  &__pics {
+    grid-area: pics;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__pic {
+    min-width: 49%;
+    max-width: 100%;
+    flex: 1;
+    max-height: 200px;
+    object-fit:cover;
+    border-radius: 5px;
+    margin: 2px;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .subtype {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid grey;
+      border-radius: 5px;
+      &__recycl-mobile {
+        font-weight: 700;
+        display: inline;
+      }
+  }
+}

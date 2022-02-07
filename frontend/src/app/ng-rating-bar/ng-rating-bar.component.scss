@@ -1,0 +1,25 @@
+.star {
+  position: relative;
+}
+.star:not(.half) {
+  min-height: 20px;
+  min-width: 20px;
+  cursor: default;
+  display: inline-block;
+}
+
+.star.active {
+  color: inherit;
+}
+
+.star.half {
+    height: inherit;
+    font-size: inherit;
+    cursor: default;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    overflow: hidden;
+
+}

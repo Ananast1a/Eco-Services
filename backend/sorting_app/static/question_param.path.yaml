@@ -1,0 +1,84 @@
+get:
+  tags:
+    - question
+  summary: Get on question specified by question_id
+  description: Get on question specified by question_id
+  operationId: getQuestion
+  parameters:
+    - name: question_id
+      in: path
+      description: id of question that is needed
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      $ref: 'question.yaml#components/responses/201'
+    '404':
+      $ref: 'question.yaml#components/responses/404'
+put:
+  security:
+    - bearerAuth: [ ]
+  tags:
+    - question
+  summary: Updates the question by id
+  description: User with admin rights has possobility to change question text and answer.
+  operationId: putQuestion
+  parameters:
+    - name: question_id
+      in: path
+      description: id of question that need to be updated
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: 'Update the record of the question by question_id. 
+                  You must give  all fields (properties).'
+    content:
+      application/json:
+        schema:
+          $ref: 'question.yaml#/components/schemas/QuestionUpdate'
+    required: true
+  responses:
+    '201':
+      $ref: 'question.yaml#components/responses/201'
+    '400':
+      $ref: 'openapi.yaml#/components/responses/400'
+    '401':
+      $ref: 'openapi.yaml#/components/responses/401'
+    '404':
+      $ref: 'question.yaml#components/responses/404'
+patch:
+  security:
+    - bearerAuth: [ ]
+  tags:
+    - question
+  summary: Updates the question by id by adding answer
+  description: User with admin rights has possobility to change question text and answer.
+  operationId: patchQuestion
+  parameters:
+    - name: question_id
+      in: path
+      description: id of question that need to be answered
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    description: 'Update the record of the question by question_id.'
+    content:
+      application/json:
+        schema:
+          $ref: 'question.yaml#/components/schemas/QuestionPatch'
+    required: true
+  responses:
+    '201':
+      $ref: 'question.yaml#/components/responses/201'
+    '400':
+      $ref: 'openapi.yaml#/components/responses/400'
+    '401':
+      $ref: 'openapi.yaml#/components/responses/401'
+    '404':
+      $ref: 'question.yaml#/components/responses/404'

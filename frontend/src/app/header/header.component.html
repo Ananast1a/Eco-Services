@@ -1,0 +1,56 @@
+<header class="header">
+    <div class="container">
+      <nav class="navigation">
+        <a class="logo"
+        routerLink="/">
+            <img class="logo__img" src="../../assets/logo.png" alt="logo">
+          <div class="logo__text">
+            <span class="logo__first-text">Nearby</span><span class="logo__second-text">Eco</span>
+          </div>
+        </a>
+        <ul class="menu" [ngClass]="{visible_mobile: menuVisibility}">
+            <li class="menu__item"
+            routerLinkActive="menu__item-active"
+            [routerLinkActiveOptions]="{exact: true}">
+              <a class="menu__link"
+              routerLink="/"
+              >Home</a>
+            </li>
+            <li class="menu__item"
+            routerLinkActive="menu__item-active">
+              <a class="menu__link"
+              routerLink="/map"
+              >Eco-services map</a>
+            </li>
+            <li class="menu__item"
+            routerLinkActive="menu__item-active">
+              <a class="menu__link"
+              routerLink="/sorting"
+              >Sorting guidelines</a>
+            </li>
+            <li *ngIf="!isAuthenticated" class="menu__item"
+            routerLinkActive="menu__item-active">
+              <a class="menu__link"
+              routerLink="/register"
+              >Register</a>
+            </li>
+            <li *ngIf="!isAuthenticated" class="menu__item"
+            routerLinkActive="menu__item-active">
+              <a class="menu__link"
+              routerLink="/login"
+              >Login</a>
+            </li>
+            <li *ngIf="isAuthenticated" class="menu__item">
+              <a class="menu__link  menu__username">{{username}}</a>
+          </li>
+          <li *ngIf="isAuthenticated" class="menu__item">
+            <a class="menu__link" (click)="onLogout()">Logout
+            </a>
+          </li>
+          </ul>
+          <div class="menu__mobile"
+          (click)="toggleMenu()"><mat-icon>list</mat-icon></div>
+      </nav>
+    </div>
+  </header>
+  

@@ -1,0 +1,66 @@
+<app-header></app-header>
+<div class="station">
+  <div class="container">
+    <div class="station-container">
+      <div class="station-img">
+        <img width="600" height="350" src="{{station.image}}" alt="service image">
+      </div>
+      <div class="station-info">
+        <h2>{{station.name}}</h2>
+        <div class="ratings">
+          <ng-rating-bar 
+          id="starRating"
+          [(value)]="value" 
+          [ratingCount]="ratingCount"
+          (click)="starClick()"
+          colorActive="gold" 
+          colorDefault="gray"
+          [styles]="styles"
+          [disabled]="disabled"
+          [style.disabled] = "disabled"
+         ></ng-rating-bar>
+         <span>{{station.rating}} / 5</span>
+        </div>
+        <p> <span>Opening Hours:</span> {{station.hours}}</p>
+        <p> <span>Waste accepted:</span> {{station.wastes.join(', ')}}</p>
+        <p> <span>Payment:</span> {{station.payment}}</p>
+        <p> <span>Delivery:</span> {{station.delivery}}</p>
+        <p> <span>Email:</span> {{station.email}}</p>
+        <p> <span>Phone:</span> {{station.phone}}</p>
+        <p> <span>Address:</span> {{station.address}}</p>
+      </div>
+    </div>
+    
+    <div class="questions">
+      <div class="questions__wrapper">
+        <p class="qa">Questions and Anwsers</p>
+        <form  (ngSubmit) = "onSubmit()">
+          <label id="question"> Question</label> <br>
+          <input type="text" name="question" id="question" [(ngModel)]="question" placeholder="Enter your question"> 
+          <button>Submit</button>
+        </form>
+
+        <div class="answers">
+          <form [formGroup]="anwserForm" (ngSubmit)="onSubmitAnwser()">
+            <div *ngFor = "let question of questions;  let i = index;">
+              <div class="answer_single">
+                <div class="question">
+                  <span>Q: {{question.question_text}}</span>
+                  <span class="username">Asked by: {{usernames[i]}}</span>
+                </div>
+                <div class="answer">A: {{question.answer_text}} </div>
+                  <div *ngIf="username === 'super_user'">
+                    <input formControlName="{{question.question_id}}" type="text" name="answer" value=""  placeholder="Submit an answer"> 
+                    <button type="submit">Submit</button>
+                  </div>
+                </div>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+

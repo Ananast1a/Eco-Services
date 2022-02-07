@@ -1,0 +1,16 @@
+get:
+  tags:
+    - question
+  summary: Get all questions specified by service_id
+  description: Get all questions for specified service
+  operationId: getQuestionForService
+  parameters:
+    - name: service_id
+      in: path
+      description: id of service
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      $ref: 'question.yaml#/components/responses/200'

@@ -1,0 +1,11 @@
+<div class="waste-type">
+    <div class="waste-type__title"
+    (click)="switchExtension()">{{wasteType.title}}</div>
+    <div class="waste-type__wrap" *ngIf="extended">
+        <div class="waste-type__recommendations">{{wasteType.recommendation}}</div>
+        <div class="waste-type__items">
+            <app-waste-item *ngFor="let wasteItemInstance of wasteType.wasteItems"
+            [wasteItem]="wasteItemInstance"></app-waste-item>
+        </div>
+    </div>
+</div>

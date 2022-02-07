@@ -1,0 +1,17 @@
+get:
+  tags:
+    - question
+  summary: Get on question specified by user_id
+  description: Get all question from user
+  operationId: getQuestionFromUSer
+  parameters:
+    - name: user_id
+      in: path
+      description: id of user
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      $ref: 'question.yaml#/components/responses/200'

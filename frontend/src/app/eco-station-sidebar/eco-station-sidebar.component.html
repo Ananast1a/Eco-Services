@@ -1,0 +1,41 @@
+<div class="eco-station-list" >
+  
+  <form id="search-form" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+      <input type="search" id="search" name="search" formControlName="searchQuery" placeholder="Search">
+  </form>
+
+  <div class="filter-container" >
+    <div class="filter-header">
+      <span class="filter" (click)="showFilter()">
+         <mat-icon>filter_list</mat-icon>
+         <span>Filter</span>
+      </span>
+      <button [style.display] ="display" form="filterForm">Submit</button>
+    </div>
+    
+    <form id="filterForm" class="filter-form" [style.display]="display" [formGroup]="filterForm" (ngSubmit)="onFilter()">
+      <h3>Change range of filter</h3>
+      <form class="show-services"  [style.display] = "'flex'" [formGroup]="toggleForm">
+        <label><input type="radio" value="all"  formControlName="toggleServices" (change)="changeToggle($event)">All</label>
+        <label><input type="radio" value="none" formControlName="toggleServices" (change)="changeToggle($event)">None</label>
+        <label><input type="radio" value="5km"  formControlName="toggleServices" (change)="changeToggle($event)">5 km</label>
+      </form>
+       <div class="filter-item" *ngFor="let filter of filterArray" >
+        <h3>{{filter.name | titlecase}}</h3>
+        <div formArrayName="{{filter.name}}">
+          <div *ngFor="let filterValue of filter.value; let i = index;">
+            <span >
+              <input formControlName="{{i}}" type="checkbox" id="{{filterValue}}" name="{{filterValue}}" value="{{filterValue}}">
+              <label for="{{filterValue}}"> {{filterValue}} </label><br>
+            </span>
+          </div> 
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <app-eco-station *ngFor="let station of showStations" [station] = "station" (addFavoriteEvent) = "addFavorite($event)" (removeFavoriteEvent) = "removeFavorite($event)">
+    <div *ngIf="toggle == 'none'"><b>:( Sorry, no eco service is available within 5 km, you can view the map for more Eco services or use Eco taxi service</b></div>
+  </app-eco-station>
+</div>

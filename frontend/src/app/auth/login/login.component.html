@@ -1,0 +1,37 @@
+<main>
+  <div class="register">
+      <div class="container">
+      <a class="logo logo-auth" 
+      routerLink="/">
+          <img class="logo__img" src="../../assets/logo.png" alt="logo">
+        <div class="logo__text">
+          <span class="logo__first-text">Nearby</span><span class="logo__second-text">Eco</span>
+        </div>
+      </a>
+      <div class="auth-error" *ngIf="error">
+        <p>{{error}}</p>
+      </div>
+      <div *ngIf="isLoading" class="spinner">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+      <form class="form-auth"
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmitLogin()">
+          <div class="form-auth__title">Login</div>
+          <div class="form-auth__username">
+              <label for="username">Username</label>
+              <input type="username" id="username"
+              formControlName="username">
+          </div>
+          <div class="form-auth__password">
+              <label for="password">Password</label>
+              <input type="password" id="password"
+              formControlName="password">
+          </div>
+          <button class="form-auth__button">Login</button>
+          <div class="redir"> Don't have an account? <a routerLink="/register">Register</a></div>
+      </form>
+  </div>
+  <div class="blank"></div>
+  </div>
+</main>

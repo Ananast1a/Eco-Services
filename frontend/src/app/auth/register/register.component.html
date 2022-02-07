@@ -1,0 +1,49 @@
+<main>
+  <div class="register">
+      <div class="container">
+      <a class="logo logo-auth" 
+      routerLink="/">
+          <img class="logo__img" src="../../assets/logo.png" alt="logo">
+        <div class="logo__text">
+          <span class="logo__first-text">Nearby</span><span class="logo__second-text">Eco</span>
+        </div>
+      </a>
+      <div class="auth-error" *ngIf="error">
+        <p>{{error}}</p>
+      </div>
+      <div class="auth-success" *ngIf="success && !error">
+        <p>{{success}}</p>
+      </div>
+      <div *ngIf="isLoading" class="spinner">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+      <form class="form-auth"
+      [formGroup]="signupForm"
+      (ngSubmit)="onSubmitReg()">
+          <div class="form-auth__title">Registration</div>
+          <div class="form-auth__username">
+              <label for="username">Username</label>
+              <input type="username" id="username"
+              formControlName="username">
+          </div>
+          <div class="form-auth__email">
+              <label for="email">Email</label>
+              <input type="text" id="email"
+              formControlName="email">
+              <p *ngIf="!signupForm.get('email')?.valid && signupForm.get('email')?.touched"
+              class="form-auth__alert">Please enter a valid email</p>
+          </div>
+          <div class="form-auth__password">
+              <label for="password">Password</label>
+              <input type="password" id="password"
+              formControlName="password">
+              <p class="form-auth__info">Should contain at least 6 characters</p>
+          </div>
+          <button class="form-auth__button"
+          type="submit">Create account</button>
+          <div class="redir"> Already have an account? <a routerLink="/login">Login</a></div>
+      </form>
+  </div>
+  <div class="blank"></div>
+  </div>
+</main>

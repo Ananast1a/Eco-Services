@@ -1,0 +1,18 @@
+<app-header></app-header>
+<div class="map-container">
+  
+  <div class="map"
+       leaflet
+       [leafletOptions]="options"
+       (leafletMapReady)="onMapReady($event)"
+       [leafletLayers]="layers">
+    <div [leafletLayers]="userLayer"></div>
+  </div>
+  <div class="sidebar">
+    <button class="add-station" *ngIf="username === 'super_user'"
+    (click)="this.addingMode = true">Add eco-station</button>
+    <app-eco-station-sidebar [stations] = "filteredStations" (closerThan5Event)="closerThan5Event($event)"></app-eco-station-sidebar>
+  </div>
+</div>
+<app-eco-station-adder *ngIf="addingMode"
+(close)="this.addingMode = false"></app-eco-station-adder>

@@ -1,0 +1,51 @@
+$header_height: 60px;
+
+.map {
+  height: 100%;
+  width: 75vw;
+  padding: 0;
+  z-index: 0;
+}
+
+.sidebar{
+  height: 100%;
+  overflow: hidden;
+  width: 25vw;
+  padding: 0.5em;
+}
+ 
+.map-container{
+  padding-top: $header_height;;
+  height: 100%;
+  display: flex;
+}
+
+.add-station {
+  padding: 10px 5px;
+  margin-bottom: 5px;
+  width: 100%;
+  border: 2px solid green;
+  border-radius: 10px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 1em;
+  &:hover {
+    background-color: #EAF5E4;
+  }
+}
+
+
+
+@media screen and (max-width: 880px) {
+  .map {
+    height: 50%;
+    width: 100vw;
+  }
+  .sidebar{
+    height: 50%;
+    width: 100vw;
+  }
+  .map-container{
+    flex-direction: column;
+  }
+}

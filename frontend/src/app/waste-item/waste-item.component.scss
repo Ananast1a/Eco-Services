@@ -1,0 +1,64 @@
+$light-background: #EAF5E4;
+
+.waste-item {
+    margin-top: 10px;
+    display: grid;
+    grid-template-areas:
+      'itemlabel subtypes';
+    grid-template-columns: 1fr 4fr;
+    background-color: rgb(245, 245, 245);
+    padding: 5px;
+    border-radius: 15px;
+    &__label {
+        grid-area: itemlabel;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px;
+    }
+    &__subtypes {
+        grid-area: subtypes;
+    }
+    &__titles {
+        grid-area: titles;
+        display: grid;
+        padding: 3px;
+        grid-gap: 5px;
+        grid-template-columns: 1fr 2fr 2fr;
+        &>div {
+            padding: 3px 0;
+            background-color: rgb(218, 218, 218);
+            border-radius: 10px;
+        }
+    }
+    &__labelpic {
+        max-height: 150px;
+    }
+
+    & > div {
+      text-align: center;
+      font-size: 14px;
+    }
+
+    &__markingName {
+        margin: 0;
+        font-weight: 500;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .waste-item {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .waste-item {
+        margin-top: 25px;
+        // background-color: $light-background;
+        &__titles {
+            display: none;
+        }
+    }
+  }

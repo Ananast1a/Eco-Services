@@ -1,0 +1,109 @@
+openapi: "3.0.3"
+info:
+  version: "0.0.6"
+  title: Endpoint quesion
+paths: {} # see endpoints description question.path.yaml question_parm.path.yaml
+components:
+  schemas:
+    Question:
+      type: object
+      properties:
+        question_text:
+          type: string
+          example: Do you recycle mercury?
+        answer_text:
+          type: string
+          example: No, please find another service.
+        service_id:
+          type: integer
+          example: 1
+        user_id:
+          type: integer
+          example: 2
+      required:
+        - question_text
+        - service_id
+        - user_id
+      example:
+        service_id: 1
+        user_id: 2
+        question_text: Do you recycle mercury?
+        answer_text:  No, please find another service.
+    QuestionUpdate:
+      type: object
+      properties:
+        question_text:
+          type: string
+          example: Do you recycle mercury?
+        answer_text:
+          type: string
+          example: No, please find another service.
+      required:
+        - question_text
+        - answer_text
+      example:
+        question_text: Do you recycle gold?
+        answer_text:  Yes, give us 1000 USD for 1 kg and we can help you.
+
+    QuestionPatch:
+      type: object
+      properties:
+        answer_text:
+          type: string
+          example: No, please find another service.
+      required:
+        - answer_text
+      example:
+        answer_text:  Please provide more information about your request.
+    QuestionCreation:
+      type: object
+      properties:
+        question_text:
+          type: string
+          example: Do you recycle mercury?
+        service_id:
+          type: integer
+          example: 1
+      required:
+        - question_text
+        - service_id
+      example:
+        service_id: 1
+        question_text: Do you recycle mercury?
+    QuestionWithId:
+      allOf:
+        - $ref: '#/components/schemas/Question'
+        - type: object
+          required:
+            - question_id
+          properties:
+            question_id:
+              type: integer
+          example:
+            service_id: 1
+            user_id: 2
+            question_text: Do you recycle mercury?
+            answer_text:  No, please find another service.
+  responses:
+    '200':
+      description: succesful operation question were readed
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/QuestionWithId'
+    '201':
+      description: succesful operation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuestionWithId'
+    '404':
+      description: question was not found
+      content:
+        application/json:
+          schema:
+            $ref: 'openapi.yaml#/components/schemas/ApiResponseError'
+          example:
+            message: "Model 'Question' with id 2 not found"

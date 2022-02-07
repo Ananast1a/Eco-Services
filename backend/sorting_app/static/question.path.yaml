@@ -1,0 +1,30 @@
+get:
+  tags:
+    - question
+  summary: Get all questions
+  operationId: getQuestions
+  responses:
+    '200':
+      $ref: 'question.yaml#/components/responses/200'
+post:
+  security:
+    - bearerAuth: []
+  tags:
+    - question
+  summary: Create question.
+  description: Only authenticated users can create question.
+  operationId: createQuestion
+  requestBody:
+    description: Info about recuiter in JSON
+    content:
+      application/json:
+        schema:
+          $ref: 'question.yaml#/components/schemas/QuestionCreation'
+    required: true
+  responses:
+    '201':
+      $ref: 'question.yaml#/components/responses/200'
+    '400':
+      $ref: 'openapi.yaml#/components/responses/400'
+    '401':
+      $ref: 'openapi.yaml#/components/responses/401'

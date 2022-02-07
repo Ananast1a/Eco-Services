@@ -1,0 +1,46 @@
+.eco-station {
+  border: 2px solid grey;
+  border-radius: 12px;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
+.service_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 0.5em;
+  margin-bottom: 0;
+}
+
+.service_img {
+  margin-top: 1em;
+}
+
+.favorite {
+  color: red;
+}
+
+
+
+.phone_number {
+  padding-left: 10px;
+}
+
+p{
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  mat-icon{
+    margin-right: 0.5em;
+  }
+}
+
+a{
+  text-decoration: none;
+  color: #1CB66E;
+
+}
+a:visited{
+  color: #00695c;
+}

@@ -1,0 +1,9 @@
+<app-header></app-header>
+<main>
+    <div class="waste-types-list">
+        <div class="container">
+            <app-waste-type *ngFor="let wasteTypeInstance of wasteTypes" 
+            [wasteType]="wasteTypeInstance"></app-waste-type>
+        </div>
+    </div>
+</main>

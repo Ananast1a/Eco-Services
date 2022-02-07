@@ -1,0 +1,19 @@
+<div class="waste-item">
+    <div class="waste-item__label">
+        <div class="waste-item__markingInfo">
+            <img class="waste-item__labelpic" src={{wasteItem.label}} alt="waste_item_label">
+            <p class="waste-item__markingName">Marking name:</p>
+            {{wasteItem.markingName}}</div>
+    </div>
+    <div class="waste-item__subtypes">
+        <div class="waste-item__titles">
+            <div class="waste-item__rec">Recyclability</div>
+            <div class="waste-item__items">Items</div>
+            <div class="waste-item__pics">Pictures</div>
+        </div>
+        <app-waste-item-subtype 
+        *ngFor="let subtypeInstance of wasteItem.wasteSubtypes"
+        [subtype]="subtypeInstance">
+        </app-waste-item-subtype>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="backdrop" (click)="onClose()"></div>
+<div class="alert-box">
+ 
+  <div class="map"
+      leaflet
+      [leafletOptions]="options"
+      (leafletClick) ="onClick($event)">
+      <div [leafletLayers]="markerLayer" *ngIf="markerLayer"></div>
+  </div>
+  <div class="form-container">
+    <form class="new-station" #form="ngForm">
+      <div class="new-station__name">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" [(ngModel)]="station.name">
+      </div>
+      <div class="new-station__address">
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" [(ngModel)]="station.address">
+      </div>
+      <div class="new-station__wastes">
+        <label for="wastes">Accepted waste</label>
+        <input type="text" id="wastes" name="wastes" [(ngModel)]="station.wastes">
+      </div>
+      <div class="new-station__delivery">
+        <label for="delivery">Delivery (yes/no?)</label>
+        <input type="text" id="delivery" name="delivery" [(ngModel)]="station.delivery">
+      </div>
+      <div class="new-station__payment">
+        <label for="payment">Payment options</label>
+        <input type="text" id="payment" name="payment" [(ngModel)]="station.payment">
+      </div>
+      <div class="new-station__workingHours">
+        <label for="hours">Working days and hours</label>
+        <input type="text" id="hours" name="hours" [(ngModel)]="station.hours">
+      </div>
+      <div class="new-station__image">
+        <label for="image">Link for station image (if available)</label>
+        <input type="text" id="image" name="image" [(ngModel)]="station.image">
+      </div>
+      <div class="new-station__email">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" [(ngModel)]="station.email">
+      </div>
+      <div class="new-station__phone">
+          <label for="phone">Phone</label>
+          <input type="text" id="phone" name="phone" [(ngModel)]="station.phone">
+      </div>
+    </form>
+    <div class="alert-box-actions">
+      <button class="btn btn-primary" (click)="onCreateStation()" [disabled] = "disabled">Create station</button>
+      <button class="btn btn-primary" (click)="onClose()">Close</button>
+    </div>
+  </div>
+</div>

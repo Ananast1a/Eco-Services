@@ -1,0 +1,24 @@
+<div class="eco-station" id="service_{{station.id}}">
+  <h2 class="service_title">
+    <a routerLink="/services/{{station.id}}">{{station.name}} </a>
+    <mat-icon class="favorite" *ngIf="isLiked; else notLiked"  (click) = "onClick()">favorite</mat-icon>
+    <ng-template #notLiked>
+      <mat-icon class="favorite_border" (click) = "onClick()">favorite_border</mat-icon>
+    </ng-template>
+  </h2>
+  <ng-content></ng-content>
+  <ng-rating-bar 
+    [(value)]="value" 
+    [ratingCount]="ratingCount"
+    colorActive="gold" 
+    colorDefault="gray"
+    [disabled] = "true"
+   ></ng-rating-bar>
+  <img width="340" height="200" class="service_img" src="{{station.image}}">
+
+  <p><mat-icon> attach_money </mat-icon> Price: {{station.payment}}</p>
+  <p><mat-icon> local_shipping </mat-icon>Delivery options: {{station.delivery}}</p>
+  <p><mat-icon> delete </mat-icon>Waste accepted: {{station.wastes.join(', ')}}</p>
+  <p><mat-icon> smartphone </mat-icon>Phone:<a class="phone_number" href="{{station.phone}}"> {{station.phone}}</a></p>
+  <p><mat-icon> local_post_office </mat-icon>Address: {{station.address}}</p>
+</div>

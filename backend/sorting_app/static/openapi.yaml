@@ -1,0 +1,72 @@
+openapi: "3.0.3"
+info:
+  title: NearbyEco (White Team)
+  description: >-
+    This is description of API for NearbyEco.
+  version: "0.0.6"
+servers:
+  - url: http://localhost:5000/api/v1
+  - url: https://flawless-energy-335218.appspot.com/api/v1
+tags:
+  - name: question
+    description: Api descriprion for operation with users' question about services
+  - name: user
+    description: Api descriprion for operation with Users (registation)
+  - name: service
+    description: Api descriprion for operation with Services
+  - name: rating
+    description: Api descriprion for operation with users' ratings
+paths:
+  /questions:
+    $ref: 'question.path.yaml'
+  /questions/{question_id}:
+    $ref: 'question_param.path.yaml'
+  /questions/service/{service_id}:
+    $ref: 'question_service_param.path.yaml'
+  /questions/user/{user_id}:
+    $ref: 'question_user_param.path.yaml'
+  /status:
+    get:
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    Question:
+      $ref: 'question.yaml#/components/schemas/QuestionWithId'
+    ApiResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Shot explanation what happened
+    ApiResponseError:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Shot explanation what happened
+        status:
+          type: integer
+          example: 400
+  responses:
+    '400':
+      description: error happened (validation error or bad format or wrong header, or something else)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiResponse'
+    '401':
+      description: Error user are not authenticated or need admin right
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiResponseError'
+          example:
+            message: "You must be authenticated user to do this action"
+            status: 401
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

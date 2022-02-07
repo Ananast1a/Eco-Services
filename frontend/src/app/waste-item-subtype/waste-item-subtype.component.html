@@ -1,0 +1,14 @@
+<div class="subtype">
+  <div class="subtype__recycl">
+    <div class="subtype__recycl-mobile">Recyclability:</div>
+    {{subtype.recyclability}}</div>
+  <ul class="subtype__descrs">
+    <li class="subtype__descr" *ngFor="let descr of subtype.description">{{descr}}</li>
+  </ul>
+  <div class="subtype__pics">
+    <img *ngFor="let pic of subtype.pictures" 
+    class="subtype__pic" 
+    src={{pic}} 
+    alt="garbage_picture">
+</div>
+</div>

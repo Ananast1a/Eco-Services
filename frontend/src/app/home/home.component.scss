@@ -1,0 +1,105 @@
+$main-background: #009688;
+$hover: #00695c;
+$light-background: #f0f7f6;
+
+
+.home {
+  position: relative;
+  padding-top: 59px;
+  min-height: 100vh;
+}
+
+.about {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding: 60px 0;
+  height: 700px;
+
+  &__title {
+    position: relative;
+    padding: 40px;
+    max-width: 660px;
+    backdrop-filter: blur(24px);
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+  }
+
+  &__slogan {
+    margin: 0;
+    display: block;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 54px;
+  }
+
+  &__motivation {
+    margin: 0;
+    margin-top: 16px;
+    padding-right: 10px;
+    display: block;
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  &__button {
+    display: block;
+    margin: 40px 0 0;
+    padding: 0 34px;
+    color: white;
+    height: 48px;
+    border-radius: 24px;
+    background-color: #1CB66E;
+    border: none;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .25px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $hover;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__background {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -5;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .home {
+    min-height: 100vh;
+  }
+  .about {
+    &__title {
+      padding: 20px;
+    }
+    &__slogan {
+      text-align: center;
+      font-size: 24px;
+      line-height: 30px;
+    }
+    &__motivation {
+      margin-top: 40px;
+      text-align: justify;
+      font-size: 18px;
+      line-height: 24px;
+    }
+    &__button {
+      margin: 40px auto 0;
+      width: 100%;
+      height: 60px;
+      font-size: 24px;
+    }
+  }
+}

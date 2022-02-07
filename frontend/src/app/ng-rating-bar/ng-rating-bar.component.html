@@ -1,0 +1,21 @@
+<ng-container *ngFor="let item of numbers; let i = index">
+  <span
+    class="star"
+    (mouseenter)="enter(i)"
+    (mouseleave)="leave(i)"
+    (click)="setSelected(i)"
+    [ngStyle]="{'color': (i <= hoverIndex) ? colorActive : colorDefault}"
+    [style.fontSize]="styles.fontSize"
+    [style.backgroundColor]="styles.backgroundColor"
+    [style.marginRight]="styles.margin"
+  >
+  ★
+  <span
+    class="star half"
+    *ngIf="!isHovered && i == halfIndex"
+    [style.width.%]="halfValue"
+    [style.color]="colorActive"
+  >★</span>
+</span>
+</ng-container>
+
