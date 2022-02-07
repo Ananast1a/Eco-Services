@@ -1,6 +1,4 @@
-# WhiteGPEC2021
-
-for the GPEC (Global Project Education Competition 2021)
+# Frontend written with Angular framework
 
 ## Whole application <https://nearby-eco.web.app/>
 
